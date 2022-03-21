@@ -1,0 +1,36 @@
+# vi user-add.sh
+
+#!/bin/sh
+for user in `more user-list1.txt`
+do
+echo "$user"
+useradd $user
+echo "$user@123" | passwd --stdin "$user"
+chage -d 0 $user
+done
+# sh user-add.sh
+user1
+Changing password for user user1.
+passwd: all authentication tokens updated successfully.
+user2
+Changing password for user user2.
+passwd: all authentication tokens updated successfully.
+user3
+Changing password for user user3.
+passwd: all authentication tokens updated successfully.
+# grep "user1\|user2\|user3" /etc/passwd
+user1:x:1008:1008::/home/user1:/bin/sh
+user2:x:1009:1009::/home/user2:/bin/sh
+user3:x:1010:1010::/home/user3:/bin/sh
+
+
+
+
+
+
+  
+
+
+
+
+
